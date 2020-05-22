@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="WpfAsyncPractice.View.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:WpfAsyncPractice.View"
+             xmlns:viewModel="clr-namespace:WpfAsyncPractice.ViewModel"
+             xmlns:mvvm="http://www.galasoft.ch/mvvmlight"
+             xmlns:interactivity="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewModel:MainViewModel />
+    </UserControl.DataContext>
+    <interactivity:Interaction.Triggers>
+        <interactivity:EventTrigger EventName="Loaded">
+            <mvvm:EventToCommand Command="{Binding LoadedCommand}" />
+        </interactivity:EventTrigger>
+    </interactivity:Interaction.Triggers>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Grid.Column="0" Grid.Row="0" Padding="10">
+            <Button Content="{Binding ButtonRunAsync1Content}">
+                <interactivity:Interaction.Triggers>
+                    <interactivity:EventTrigger EventName="Click">
+                        <mvvm:EventToCommand Command="{Binding ClickRunAsync1Command}" />
+                    </interactivity:EventTrigger>
+                </interactivity:Interaction.Triggers>
+            </Button>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="0" Padding="10">
+            <ProgressBar Minimum="0" Maximum="1" Value="{Binding Async1ProcessPercentage}" />
+        </Border>
+        <Border Grid.Column="2" Grid.Row="0" Padding="10">
+            <Label Content="{Binding Async1ProcessNo}" />
+        </Border>
+
+        <Border Grid.Column="0" Grid.Row="1" Padding="10">
+            <Button Content="{Binding ButtonRunAsync2Content}">
+                <interactivity:Interaction.Triggers>
+                    <interactivity:EventTrigger EventName="Click">
+                        <mvvm:EventToCommand Command="{Binding ClickRunAsync2Command}" />
+                    </interactivity:EventTrigger>
+                </interactivity:Interaction.Triggers>
+            </Button>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="1" Padding="10">
+            <ProgressBar Minimum="0" Maximum="1" Value="{Binding Async2ProcessPercentage}" />
+        </Border>
+        <Border Grid.Column="2" Grid.Row="1" Padding="10">
+            <Label Content="{Binding Async2ProcessNo}" />
+        </Border>
+        
+        <Border Grid.Column="0" Grid.Row="2" Padding="10">
+            <Button Content="{Binding ButtonRunAllAsyncContent}">
+                <interactivity:Interaction.Triggers>
+                    <interactivity:EventTrigger EventName="Click">
+                        <mvvm:EventToCommand Command="{Binding ClickRunAllAsyncCommand}" />
+                    </interactivity:EventTrigger>
+                </interactivity:Interaction.Triggers>
+            </Button>
+        </Border>
+    </Grid>
+</UserControl>
