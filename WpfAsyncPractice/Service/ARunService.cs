@@ -13,7 +13,8 @@ namespace WpfAsyncPractice.Service
         public event EventHandler<ProcessDto> UpdateNoEvent;
 
         public bool IsRunning { get; protected set; }
-
+        private int _delayForEachStep = 1;
+        
         private int _no;
 
         protected int No
@@ -36,7 +37,7 @@ namespace WpfAsyncPractice.Service
         protected async Task<int> 機板進料(int no)
         {
             Debug.WriteLine("機板進料");
-            await Task.Delay(9);
+            await Task.Delay(_delayForEachStep);
             No = ++no;
             return No;
         }
@@ -44,7 +45,7 @@ namespace WpfAsyncPractice.Service
         protected async Task<int> 產品底座模組_掃描(int no)
         {
             Debug.WriteLine("產品底座模組_掃描");
-            await Task.Delay(9);
+            await Task.Delay(_delayForEachStep);
             No = ++no;
             return No;
         }
@@ -52,7 +53,7 @@ namespace WpfAsyncPractice.Service
         protected async Task<int> 手臂模組(int no)
         {
             Debug.WriteLine("手臂模組");
-            await Task.Delay(9);
+            await Task.Delay(_delayForEachStep);
             No = ++no;
             return No;
         }
@@ -60,7 +61,7 @@ namespace WpfAsyncPractice.Service
         protected async Task<int> AOI(int no)
         {
             Debug.WriteLine("AOI");
-            await Task.Delay(9);
+            await Task.Delay(_delayForEachStep);
             No = ++no;
             return No;
         }
@@ -68,7 +69,7 @@ namespace WpfAsyncPractice.Service
         protected async Task<int> 晶片模組(int no)
         {
             Debug.WriteLine("晶片模組");
-            await Task.Delay(9);
+            await Task.Delay(_delayForEachStep);
             No = ++no;
             return No;
         }
@@ -76,7 +77,7 @@ namespace WpfAsyncPractice.Service
         protected async Task<int> 產品底座模組(int no)
         {
             Debug.WriteLine("產品底座模組");
-            await Task.Delay(9);
+            await Task.Delay(_delayForEachStep);
             No = ++no;
             return No;
         }
@@ -84,7 +85,7 @@ namespace WpfAsyncPractice.Service
         protected async Task<int> 機板退料(int no)
         {
             Debug.WriteLine("機板退料");
-            await Task.Delay(9);
+            await Task.Delay(_delayForEachStep);
             No = ++no;
             return No;
         }
