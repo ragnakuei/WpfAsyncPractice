@@ -6,7 +6,7 @@ namespace WpfAsyncPractice.Service
 {
     public class RunService1 : ARunService
     {
-        protected override double TotalCount { get; set; } = 503.0;
+        protected override double TotalCount { get; } = 503.0;
 
         public override async Task<int> RunAsync(int no)
         {

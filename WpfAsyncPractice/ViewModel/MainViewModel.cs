@@ -10,7 +10,7 @@ namespace WpfAsyncPractice.ViewModel
     {
         public MainViewModel()
         {
-            LoadedCommand           = new RelayCommand(async () => await LoadedExecuteAsync());
+            LoadedCommand           = new RelayCommand(LoadedExecute);
             ClickRunAllAsyncCommand = new RelayCommand(async () => await ClickRunAllAsyncExecuteAsync());
             ClickRunAsync1Command   = new RelayCommand(async () => await ClickRunAsync1ExecuteAsync());
             ClickRunAsync2Command   = new RelayCommand(async () => await ClickRunAsync2ExecuteAsync());
@@ -22,9 +22,9 @@ namespace WpfAsyncPractice.ViewModel
             _run2Service.UpdateNoEvent += UpdateAsync2ProcessNo;
         }
 
-        public ICommand LoadedCommand { get; private set; }
+        public ICommand LoadedCommand { get; }
 
-        private async Task LoadedExecuteAsync()
+        private void LoadedExecute()
         {
             ButtonRunAsync1Content   = RunAsync1;
             ButtonRunAsync2Content   = RunAsync2;
@@ -38,7 +38,7 @@ namespace WpfAsyncPractice.ViewModel
         private const string RunAsync1  = "Run Async1";
         private const string StopAsync1 = "Stop Async1";
 
-        public ICommand ClickRunAsync1Command { get; private set; }
+        public ICommand ClickRunAsync1Command { get; }
 
         private async Task ClickRunAsync1ExecuteAsync()
         {
@@ -69,7 +69,7 @@ namespace WpfAsyncPractice.ViewModel
         private const string RunAsync2  = "Run Async2";
         private const string StopAsync2 = "Stop Async2";
 
-        public ICommand ClickRunAsync2Command { get; private set; }
+        public ICommand ClickRunAsync2Command { get; }
 
         private async Task ClickRunAsync2ExecuteAsync()
         {
@@ -108,7 +108,7 @@ namespace WpfAsyncPractice.ViewModel
             set => Set(() => ButtonRunAllAsyncContent, ref _buttonRunAllAsyncContent, value, true);
         }
 
-        public ICommand ClickRunAllAsyncCommand { get; private set; }
+        public ICommand ClickRunAllAsyncCommand { get; }
 
         private async Task ClickRunAllAsyncExecuteAsync()
         {
@@ -170,7 +170,7 @@ namespace WpfAsyncPractice.ViewModel
 
         #endregion
 
-        private ARunService _run1Service;
-        private ARunService _run2Service;
+        private readonly ARunService _run1Service;
+        private readonly ARunService _run2Service;
     }
 }

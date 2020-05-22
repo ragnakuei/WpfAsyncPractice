@@ -8,7 +8,7 @@ namespace WpfAsyncPractice.Service
     {
         public abstract Task<int> RunAsync(int no);
 
-        protected abstract double TotalCount { get; set; }
+        protected abstract double TotalCount { get; }
 
         public event EventHandler<ProcessDto> UpdateNoEvent;
 
